@@ -1,17 +1,21 @@
-# day0
+# Day 0 - Flutter Environment Setup
 
-A new Flutter project.
+## What I did
+- Installed Flutter SDK.
+- Installed Android Studio and required SDK components.
+- Created my first Flutter project.
+- Configured the Android emulator.
+- Set up Git and GitHub repository.
+- Successfully built and ran the default Flutter application.
 
-## Getting Started
+## What I learned
+- Flutter project structure.
+- How to create a Flutter project.
+- How to run an app on an Android emulator.
+- Basic Git workflow for Flutter projects.
 
-This project is a starting point for a Flutter application.
+## Status
+ Flutter environment successfully configured.
+ ## Screenshot
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Day 0 Screenshot](screenshot.png)
