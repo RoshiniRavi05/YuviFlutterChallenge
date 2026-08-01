@@ -198,7 +198,7 @@ class _ClockPainter extends CustomPainter {
   bool shouldRepaint(covariant _ClockPainter oldDelegate) => false;
 }
 
-/// Outlined eye icon matching reference image — white almond eye outer contour + center pupil ring.
+/// Pixel-perfect outlined eye icon matching reference image — thin outer contour + hollow center ring.
 class EyeIcon extends StatelessWidget {
   final double size;
   final Color color;
@@ -214,7 +214,7 @@ class EyeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(size, size * 0.62),
+      size: Size(size, size * 0.55),
       painter: _EyePainter(color: color, strokeWidth: strokeWidth),
     );
   }
@@ -239,17 +239,18 @@ class _EyePainter extends CustomPainter {
     final h = size.height;
     final center = Offset(w / 2, h / 2);
 
-    // Almond outer eye contour
+    // Smooth horizontal eye contour with gentle cubic curves
     final eye = Path()
       ..moveTo(0, center.dy)
-      ..quadraticBezierTo(w / 2, -h * 0.35, w, center.dy)
-      ..quadraticBezierTo(w / 2, h * 1.35, 0, center.dy);
+      ..cubicTo(w * 0.28, 0, w * 0.72, 0, w, center.dy)
+      ..cubicTo(w * 0.72, h, w * 0.28, h, 0, center.dy);
     canvas.drawPath(eye, paint);
 
-    // Center pupil circle ring
-    canvas.drawCircle(center, w * 0.16, paint);
+    // Hollow center pupil ring
+    canvas.drawCircle(center, w * 0.17, paint);
   }
 
   @override
-  bool shouldRepaint(covariant _EyePainter oldDelegate) => false;
+  bool shouldRepaint(covariant _EyePainter oldDelegate) =>
+      oldDelegate.color != color || oldDelegate.strokeWidth != strokeWidth;
 }

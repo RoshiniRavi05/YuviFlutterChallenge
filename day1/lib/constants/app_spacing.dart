@@ -17,7 +17,7 @@ class AppSpacing {
 
   // ── Section gaps ────────────────────────────────────────────────────────
   static const double headerToMonth = 20.0;
-  static const double monthToCalendar = 14.0;
+  static const double monthToCalendar = 16.0;
   static const double calendarToCards = 22.0;
 
   // ── Month selector ────────────────────────────────────────────────────────
@@ -30,8 +30,8 @@ class AppSpacing {
   static const double weekdayRowHeight = 13.0;
   static const double weekdayToDateGap = 4.0;
   static const double dateRowHeight = 26.0;
-  static const double selectedCapsuleWidth = 44.0;
-  static const double selectedCapsuleHeight = 68.0;
+  static const double selectedCapsuleWidth = 40.0;
+  static const double selectedCapsuleHeight = 64.0;
   static const double selectedCapsuleInnerGap = 4.0;
   static const double pastCircleSize = 26.0;
   static const double calendarHorizontalInset = 4.0;

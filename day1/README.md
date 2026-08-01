@@ -18,6 +18,8 @@ Improve the fitness dashboard UI to match the reference design more closely.
 - Matching the reference design accurately.
 - Getting the spacing and alignment just right.
 - Finding icons similar to the reference.
+## current working
+- I'm still working on the correct pixel perfect icons for the bell and the eye icon in the exercise card
 
 ## Reflection
 Today's work showed me that pixel-perfect UI design takes patience and attention to detail. Small refinements can make a big difference in the final result.
