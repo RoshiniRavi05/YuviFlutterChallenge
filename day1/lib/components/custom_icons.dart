@@ -184,7 +184,7 @@ class _ClockPainter extends CustomPainter {
       ..strokeJoin = StrokeJoin.round;
 
     final center = Offset(size.width / 2, size.height / 2);
-    final arm = size.width * 0.38;
+    final arm = size.width * 0.36;
 
     final path = Path()
       ..moveTo(center.dx, center.dy - arm)
@@ -208,7 +208,7 @@ class EyeIcon extends StatelessWidget {
     super.key,
     this.size = AppSpacing.cardEyeIconSize,
     this.color = AppColors.white,
-    this.strokeWidth = 1.2,
+    this.strokeWidth = 1.1,
   });
 
   @override
@@ -242,12 +242,12 @@ class _EyePainter extends CustomPainter {
     // Almond outer eye contour
     final eye = Path()
       ..moveTo(0, center.dy)
-      ..quadraticBezierTo(w / 2, -1.0, w, center.dy)
-      ..quadraticBezierTo(w / 2, h + 1.0, 0, center.dy);
+      ..quadraticBezierTo(w / 2, -h * 0.35, w, center.dy)
+      ..quadraticBezierTo(w / 2, h * 1.35, 0, center.dy);
     canvas.drawPath(eye, paint);
 
     // Center pupil circle ring
-    canvas.drawCircle(center, w * 0.18, paint);
+    canvas.drawCircle(center, w * 0.16, paint);
   }
 
   @override

@@ -16,32 +16,32 @@ class AppSpacing {
   static const double redDotOffset = 5.0;
 
   // ── Section gaps ────────────────────────────────────────────────────────
-  static const double headerToMonth = 22.0;
-  static const double monthToCalendar = 16.0;
-  static const double calendarToCards = 24.0;
+  static const double headerToMonth = 20.0;
+  static const double monthToCalendar = 14.0;
+  static const double calendarToCards = 22.0;
 
   // ── Month selector ────────────────────────────────────────────────────────
   static const double monthPillHPadding = 20.0;
-  static const double monthPillVPadding = 10.0;
+  static const double monthPillVPadding = 11.0;
   static const double monthArrowWidth = 16.0;
   static const double monthArrowHeight = 8.0;
 
   // ── Calendar ──────────────────────────────────────────────────────────────
-  static const double weekdayRowHeight = 12.0;
-  static const double weekdayToDateGap = 3.0;
-  static const double dateRowHeight = 25.0;
-  static const double selectedCapsuleWidth = 32.0;
-  static const double selectedCapsuleHeight = 54.0;
-  static const double selectedCapsuleInnerGap = 2.0;
-  static const double pastCircleSize = 25.0;
-  static const double calendarHorizontalInset = 6.0;
+  static const double weekdayRowHeight = 13.0;
+  static const double weekdayToDateGap = 4.0;
+  static const double dateRowHeight = 26.0;
+  static const double selectedCapsuleWidth = 44.0;
+  static const double selectedCapsuleHeight = 68.0;
+  static const double selectedCapsuleInnerGap = 4.0;
+  static const double pastCircleSize = 26.0;
+  static const double calendarHorizontalInset = 4.0;
 
   // ── Stat cards ────────────────────────────────────────────────────────────
   static const double cardGap = 12.0;
   static const double cardPaddingH = 18.0;
-  static const double cardPaddingV = 16.0;
-  static const double cardTitleToValue = 30.0;   // Space between Title ("Time"/"Exercises") and Value ("1:30"/"12/8")
-  static const double cardValueToSubtitle = 6.0;   // Space between Value ("1:30"/"12/8") and Subtitle ("Hours"/"Tasks")
+  static const double cardPaddingV = 18.0;
+  static const double cardTitleToValue = 38.0;   // Large vertical gap between Title ("Time"/"Exercises") and Value ("1:30"/"12/8")
+  static const double cardValueToSubtitle = 8.0;   // Small vertical gap between Value ("1:30"/"12/8") and Subtitle ("Hours"/"Tasks")
   static const double cardIconCircleSize = 18.0;
   static const double cardClockIconSize = 10.0;
   static const double cardEyeIconSize = 11.0;

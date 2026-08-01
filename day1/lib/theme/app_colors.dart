@@ -7,8 +7,8 @@ class AppColors {
   /// Scaffold background — warm off-white (#F8F9FA)
   static const Color background = Color(0xFFF8F9FA);
 
-  /// Warm pastel peach for Month Chip & WED capsule (#FFC5AE)
-  static const Color peach = Color(0xFFFFC5AE);
+  /// Warm pastel peach for Month Chip & WED capsule (#FFC0A4)
+  static const Color peach = Color(0xFFFFC0A4);
 
   /// Primary text (#000000)
   static const Color text = Color(0xFF000000);

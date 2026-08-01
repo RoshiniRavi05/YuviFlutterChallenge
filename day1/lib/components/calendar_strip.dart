@@ -137,14 +137,14 @@ class _SelectedCapsule extends StatelessWidget {
     return Container(
       width: AppSpacing.selectedCapsuleWidth,
       height: AppSpacing.selectedCapsuleHeight,
-      padding: const EdgeInsets.only(top: 7.0, bottom: 7.0),
-      alignment: Alignment.topCenter,
+      padding: const EdgeInsets.symmetric(vertical: 7.0),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.peach,
         borderRadius: BorderRadius.circular(AppRadius.selectedCapsule),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(

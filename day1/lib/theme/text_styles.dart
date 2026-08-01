@@ -44,20 +44,21 @@ class AppTextStyles {
     height: 1.2,
   );
 
-  /// Month pill ("Feb 2025") — w600, 14px
+  /// Month pill ("Feb 2025") — 15.5px Inter SemiBold (w600), pure black (#000000)
   static final TextStyle monthPill = _font(
-    fontSize: 14,
+    fontSize: 15.5,
     fontWeight: FontWeight.w600,
-    color: AppColors.text,
+    color: const Color(0xFF000000),
+    letterSpacing: 0,
     height: 1.0,
   );
 
   /// Weekday label ("SUN"…"SAT")
   static final TextStyle weekdayLabel = _font(
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: FontWeight.w500,
     color: AppColors.text,
-    letterSpacing: 0.4,
+    letterSpacing: 0.3,
     height: 1.0,
   );
 
@@ -69,10 +70,10 @@ class AppTextStyles {
     height: 1.0,
   );
 
-  /// Selected date number
+  /// Selected date number (bold '4' inside WED 4 capsule)
   static final TextStyle daySelected = _font(
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
     color: AppColors.text,
     height: 1.0,
   );
