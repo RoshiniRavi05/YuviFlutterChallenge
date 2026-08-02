@@ -31,6 +31,12 @@ The main goal was to improve my Flutter UI skills by matching the given design a
 - Dart
 - Material Design
 
+## what changes i have made
+
+-The whole layout was bit off so there was extra space at the bottom i rectified it by correcting the layouts
+-Improved color replicatiosn and closest replication of eye icon in the exrecise card
+
+
 ## Status
 
 ✅ Day 2 balace part of the UI Completed
