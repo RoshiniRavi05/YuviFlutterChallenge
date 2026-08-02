@@ -33,6 +33,9 @@ The main goal was to improve my Flutter UI skills by matching the given design a
 
 ## Status
 
-✅ Day 2 UI Completed
+✅ Day 2 balace part of the UI Completed
 
 Further refinements can still be made to achieve an even closer pixel-perfect match with the reference design.
+
+## ScreenShot
+![Day 0 Screenshot](screenshot.jpeg)
