@@ -12,7 +12,7 @@ class CircularProgressWidget extends StatelessWidget {
     super.key,
     this.progress = 0.64,
     this.percentageText = '64%',
-    this.size = 56.0,
+    this.size = 58.0,
   });
 
   @override
@@ -23,19 +23,33 @@ class CircularProgressWidget extends StatelessWidget {
       child: CustomPaint(
         painter: _CircularProgressPainter(
           progress: progress,
-          trackColor: const Color(0xFFE8ECEF),
-          progressColor: const Color(0xFF82BE3F),
-          innerBgColor: const Color(0xFFF0F3F4),
-          strokeWidth: 6.0,
+          trackColor: const Color(0xFFEDF0F2),
+          progressColor: const Color(0xFF8EB74A),
+          innerBgColor: const Color(0xFFE3E8EA),
+          strokeWidth: 7.0,
         ),
         child: Center(
-          child: Text(
-            percentageText,
-            style: GoogleFonts.inter(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: const Color(0xFF1E2325),
-              letterSpacing: -0.2,
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '64',
+                  style: GoogleFonts.inter(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1E2325),
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                TextSpan(
+                  text: '%',
+                  style: GoogleFonts.inter(
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.w600,
+                    color: const Color(0xFF1E2325),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -64,27 +78,27 @@ class _CircularProgressPainter extends CustomPainter {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = (size.width - strokeWidth) / 2;
 
-    // Inner filled background circle
+    // 1. Inner filled soft gray disc with padding gap
     final innerBgPaint = Paint()
       ..color = innerBgColor
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(center, radius - (strokeWidth / 2), innerBgPaint);
+    canvas.drawCircle(center, radius - (strokeWidth / 2) - 2.5, innerBgPaint);
 
-    // Background track ring
+    // 2. Background track ring (#EDF0F2)
     final trackPaint = Paint()
       ..color = trackColor
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
     canvas.drawCircle(center, radius, trackPaint);
 
-    // Progress arc starting at 12 o'clock (-90 degrees) rotating clockwise
+    // 3. Progress arc starting at ~4:20 o'clock (40°) sweeping 64% clockwise to ~11:55 o'clock
     final progressPaint = Paint()
       ..color = progressColor
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    const startAngle = -pi / 2;
+    final startAngle = (40 * pi) / 180;
     final sweepAngle = 2 * pi * progress;
 
     canvas.drawArc(
@@ -100,6 +114,7 @@ class _CircularProgressPainter extends CustomPainter {
   bool shouldRepaint(covariant _CircularProgressPainter oldDelegate) {
     return oldDelegate.progress != progress ||
         oldDelegate.trackColor != trackColor ||
-        oldDelegate.progressColor != progressColor;
+        oldDelegate.progressColor != progressColor ||
+        oldDelegate.strokeWidth != strokeWidth;
   }
 }

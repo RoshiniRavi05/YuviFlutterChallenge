@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               AppSpacing.screenHorizontal,
               AppSpacing.screenTop,
               AppSpacing.screenHorizontal,
-              AppSpacing.screenHorizontal,
+              20.0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

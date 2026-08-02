@@ -16,17 +16,12 @@ class ExerciseCard extends StatelessWidget {
       value: '12/8',
       subtitle: 'Tasks',
       backgroundColor: AppColors.lightGreen,
-      iconBadge: Container(
+      iconBadge: SizedBox(
         width: AppSpacing.cardIconCircleSize,
         height: AppSpacing.cardIconCircleSize,
-        decoration: const BoxDecoration(
-          color: AppColors.greenIconBg,
-          shape: BoxShape.circle,
-        ),
         child: const Center(
           child: EyeIcon(
-            size: AppSpacing.cardEyeIconSize,
-            strokeWidth: 0.9,
+            size: AppSpacing.cardIconCircleSize,
           ),
         ),
       ),

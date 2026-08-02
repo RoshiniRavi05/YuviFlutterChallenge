@@ -25,14 +25,14 @@ class AppColors {
   /// Notification button subtle shadow
   static const Color notificationShadow = Color(0x0D000000);
 
-  /// Time card — soft powder blue (#D4EEF9)
-  static const Color lightBlue = Color(0xFFD4EEF9);
+  /// Time card — soft powder blue (#CCE8F1)
+  static const Color lightBlue = Color(0xFFCCE8F1);
 
   /// Time card icon badge — slate teal (#4692A7)
   static const Color blueIconBg = Color(0xFF4692A7);
 
-  /// Exercises card — soft light lime green (#DEF2BC)
-  static const Color lightGreen = Color(0xFFDEF2BC);
+  /// Exercises card — soft light lime green (#D5EAB3)
+  static const Color lightGreen = Color(0xFFD5EAB3);
 
   /// Exercises card icon badge — sage green (#94B549)
   static const Color greenIconBg = Color(0xFF94B549);

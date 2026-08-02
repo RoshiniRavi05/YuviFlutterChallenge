@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-/// CustomPainter rendering 7 evenly spaced vertical dashed grid lines.
+/// CustomPainter rendering 7 vertical dashed grid lines inset with side margins.
 class ChartGridPainter extends CustomPainter {
   final Color lineDashColor;
   final double dashWidth;
   final double dashGap;
+  final double sidePadding;
 
   const ChartGridPainter({
-    this.lineDashColor = const Color(0xFFDCE2E5),
-    this.dashWidth = 4.0,
-    this.dashGap = 4.0,
+    this.lineDashColor = const Color(0xFFE2E7EA),
+    this.dashWidth = 3.5,
+    this.dashGap = 3.5,
+    this.sidePadding = 22.0,
   });
 
   @override
@@ -22,8 +24,10 @@ class ChartGridPainter extends CustomPainter {
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
 
+    final double availableWidth = width - (2 * sidePadding);
+
     for (int i = 0; i < 7; i++) {
-      final double x = (width / 6) * i;
+      final double x = sidePadding + (availableWidth / 6) * i;
       double startY = 0;
       while (startY < height) {
         canvas.drawLine(
@@ -40,6 +44,7 @@ class ChartGridPainter extends CustomPainter {
   bool shouldRepaint(covariant ChartGridPainter oldDelegate) {
     return oldDelegate.lineDashColor != lineDashColor ||
         oldDelegate.dashWidth != dashWidth ||
-        oldDelegate.dashGap != dashGap;
+        oldDelegate.dashGap != dashGap ||
+        oldDelegate.sidePadding != sidePadding;
   }
 }
