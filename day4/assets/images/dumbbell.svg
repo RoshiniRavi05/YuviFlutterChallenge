@@ -1,0 +1,12 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Central Bar -->
+  <path d="M 4.8 19.2 L 19.2 4.8" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom-Left Outer Plate -->
+  <path d="M 5.2 14.2 L 9.8 18.8" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom-Left Inner Plate -->
+  <path d="M 6.5 11.5 L 12.5 17.5" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top-Right Inner Plate -->
+  <path d="M 11.5 6.5 L 17.5 12.5" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top-Right Outer Plate -->
+  <path d="M 14.2 5.2 L 18.8 9.8" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

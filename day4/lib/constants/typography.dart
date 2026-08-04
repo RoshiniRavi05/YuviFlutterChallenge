@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'colors.dart';
+
+/// Typography text style tokens using Inter Google Fonts.
+class AppTypography {
+  AppTypography._();
+
+  /// Subtitle "Workout" label style (Weight 600, Size 15)
+  static TextStyle workoutLabel = GoogleFonts.inter(
+    fontSize: 15.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+    height: 1.1,
+  );
+
+  /// Main hero metric "90 min" style (Weight 500, Size 32)
+  static TextStyle heroMetric = GoogleFonts.inter(
+    fontSize: 32.0,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textDark,
+    letterSpacing: -0.5,
+    height: 1.05,
+  );
+
+  /// Exercise card title "Exercise" (Weight 600, Size 20)
+  static TextStyle exerciseTitle = GoogleFonts.inter(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+  );
+
+  /// Exercise index badge "1/8" (Weight 500, Size 13)
+  static TextStyle exerciseBadge = GoogleFonts.inter(
+    fontSize: 13.0,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textDark,
+  );
+
+  /// Timer metric "1:29:59" (Weight 600, Size 24)
+  static TextStyle timerText = GoogleFonts.inter(
+    fontSize: 24.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+    letterSpacing: -0.4,
+  );
+
+  /// Subtitle "Running" under center gauge (Gray #666666, Weight 400, Size 12)
+  static TextStyle runningLabel = GoogleFonts.inter(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w400,
+    color: const Color(0xFF666666),
+  );
+
+  /// Distance metric "10km" (Weight 600, Size 26)
+  static TextStyle distanceText = GoogleFonts.inter(
+    fontSize: 26.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+    letterSpacing: -0.5,
+  );
+
+  /// Metric title label e.g. "VO₂" (Weight 600, Size 13)
+  static TextStyle metricLabel = GoogleFonts.inter(
+    fontSize: 13.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+  );
+
+  /// Metric numeric value e.g. "29", "98" (Weight 600, Size 20)
+  static TextStyle metricValue = GoogleFonts.inter(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDark,
+  );
+
+  /// STOP button text (Weight 700, Size 13.5, Letter spacing 0.8)
+  static TextStyle stopButtonText = GoogleFonts.inter(
+    fontSize: 13.5,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textDark,
+    letterSpacing: 0.8,
+  );
+}
