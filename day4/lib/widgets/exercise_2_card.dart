@@ -241,70 +241,14 @@ class _DumbbellIcon extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       alignment: Alignment.center,
-      child: SizedBox(
+      child: Image.asset(
+        'assets/images/dumbbell.png',
         width: size * 0.54,
         height: size * 0.54,
-        child: const CustomPaint(
-          painter: _DumbbellVectorBadgePainter(),
-        ),
+        fit: BoxFit.contain,
       ),
     );
   }
-}
-
-class _DumbbellVectorBadgePainter extends CustomPainter {
-  const _DumbbellVectorBadgePainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final double s = size.width / 24.0;
-
-    final Paint paint = Paint()
-      ..color = const Color(0xFF111111)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.4 * s
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round
-      ..isAntiAlias = true;
-
-    // 1. Central Bar extending through both ends
-    canvas.drawLine(
-      Offset(4.5 * s, 19.5 * s),
-      Offset(19.5 * s, 4.5 * s),
-      paint,
-    );
-
-    // 2. Bottom-Left Outer Plate (smaller disc)
-    canvas.drawLine(
-      Offset(4.8 * s, 14.2 * s),
-      Offset(9.8 * s, 19.2 * s),
-      paint,
-    );
-
-    // 3. Bottom-Left Inner Plate (larger disc)
-    canvas.drawLine(
-      Offset(6.2 * s, 11.2 * s),
-      Offset(12.8 * s, 17.8 * s),
-      paint,
-    );
-
-    // 4. Top-Right Inner Plate (larger disc)
-    canvas.drawLine(
-      Offset(11.2 * s, 6.2 * s),
-      Offset(17.8 * s, 12.8 * s),
-      paint,
-    );
-
-    // 5. Top-Right Outer Plate (smaller disc)
-    canvas.drawLine(
-      Offset(14.2 * s, 4.8 * s),
-      Offset(19.2 * s, 9.8 * s),
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 
