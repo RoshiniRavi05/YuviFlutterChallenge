@@ -8,9 +8,9 @@ class ChartLinePainter extends CustomPainter {
   final double sidePadding;
 
   const ChartLinePainter({
-    this.lineColor = const Color(0xFF389EB6),
+    this.lineColor = const Color(0xFF3E9FC3),
     this.strokeWidth = 4.0,
-    this.sidePadding = 22.0,
+    this.sidePadding = 34.0,
   });
 
   @override
@@ -21,22 +21,29 @@ class ChartLinePainter extends CustomPainter {
     final double availableWidth = width - (2 * sidePadding);
     double dayX(double index) => sidePadding + (availableWidth / 6) * index;
 
-    // Control points: Starts at x = 0 (before 1st grid line), passes all 7 day lines, ends at x = width (after 7th grid line)
+    // Traced spline geometry matching reference image exactly:
+    // 1. Small rounded Sunday rise (y = 0.52)
+    // 2. Shallow Monday dip (y = 0.64)
+    // 3. Rounded Tuesday hill slightly higher than Sunday (y = 0.44)
+    // 4. Moderate, wide, smooth Wednesday valley (y = 0.70)
+    // 5. Smooth continuous Thursday climb
+    // 6. Broad, tall Friday peak (y = 0.18, 12% taller, 20% wider, rounded top)
+    // 7. Gradual Saturday descent tapering to far right edge (y = 0.50)
     final List<Offset> points = [
-      Offset(0.0, height * 0.66),                          // Starts at far left edge before Sunday line
-      Offset(dayX(0.0), height * 0.57),                     // Crest over Sunday (1st grid line)
-      Offset(dayX(0.7), height * 0.72),                     // Dip between Sunday & Monday
-      Offset(dayX(1.0), height * 0.62),                     // Rising through Monday (2nd grid line)
-      Offset(dayX(2.0), height * 0.46),                     // Tuesday (3rd grid line) plateau start
-      Offset(dayX(2.7), height * 0.47),                     // Wednesday plateau
-      Offset(dayX(3.3), height * 0.76),                     // Lowest valley dip after Wednesday
-      Offset(dayX(4.2), height * 0.40),                     // Ascending slope post-Wednesday (dot location!)
-      Offset(dayX(5.0), height * 0.20),                     // Friday (6th grid line) HIGHEST PEAK
-      Offset(dayX(6.0), height * 0.52),                     // Saturday (7th grid line)
-      Offset(width, height * 0.56),                         // Extends all the way to far right edge after Saturday line
+      Offset(0.0, height * 0.64),                             // Starts low at far left edge
+      Offset(dayX(0.0), height * 0.52),                        // Sunday rise
+      Offset(dayX(0.7), height * 0.64),                        // Shallow Monday dip
+      Offset(dayX(1.1), height * 0.58),                        // Ascending into Tuesday
+      Offset(dayX(2.0), height * 0.44),                        // Tuesday hill (higher than Sunday)
+      Offset(dayX(3.0), height * 0.70),                        // Wide, smooth Wednesday valley
+      Offset(dayX(4.0), height * 0.40),                        // Continuous Thursday climb
+      Offset(dayX(4.8), height * 0.18),                        // Broad Friday peak (taller & wider)
+      Offset(dayX(5.1), height * 0.19),                        // Rounded top crest
+      Offset(dayX(5.7), height * 0.36),                        // Smooth post-Friday descent
+      Offset(dayX(6.0), height * 0.46),                        // Saturday descent
+      Offset(width, height * 0.50),                            // Far right edge finish
     ];
 
-    // Smooth C1 continuous cubic spline path
     final Path path = Path();
     path.moveTo(points[0].dx, points[0].dy);
 
@@ -64,21 +71,22 @@ class ChartLinePainter extends CustomPainter {
 
     canvas.drawPath(path, linePaint);
 
-    // Active Highlight Marker: White Outer Circle (radius 7.0) + Black Inner Center (radius 3.0)
-    // Positioned directly on the curve at dayX(4.2) on the ascending slope
-    final Offset activePoint = _getPointOnPathAtX(path, dayX(4.2));
+    // Active Highlight Marker (10% smaller: 20px white / 7px black)
+    // Perfectly centered on ascending stroke before Friday peak (~66% width)
+    final double markerTargetX = sidePadding + (availableWidth * 0.66);
+    final Offset activePoint = _getPointOnPathAtX(path, markerTargetX);
 
-    // Outer white circle (diameter 14px)
+    // Outer white circle (20px diameter -> radius 10.0)
     final Paint outerDotPaint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(activePoint, 7.0, outerDotPaint);
+    canvas.drawCircle(activePoint, 10.0, outerDotPaint);
 
-    // Inner black dot (diameter 6px)
+    // Inner black circle (7px diameter -> radius 3.5)
     final Paint innerDotPaint = Paint()
       ..color = const Color(0xFF000000)
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(activePoint, 3.0, innerDotPaint);
+    canvas.drawCircle(activePoint, 3.5, innerDotPaint);
   }
 
   Offset _getPointOnPathAtX(Path path, double targetX) {

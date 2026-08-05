@@ -7,10 +7,7 @@ import 'chart_line.dart';
 class WeeklyPointsChart extends StatelessWidget {
   final double chartHeight;
 
-  const WeeklyPointsChart({
-    super.key,
-    this.chartHeight = 124.0,
-  });
+  const WeeklyPointsChart({super.key, this.chartHeight = 124.0});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +27,10 @@ class WeeklyPointsChart extends StatelessWidget {
             child: Stack(
               children: const [
                 Positioned.fill(
-                  child: CustomPaint(
-                    painter: ChartGridPainter(),
-                  ),
+                  child: CustomPaint(painter: ChartGridPainter()),
                 ),
                 Positioned.fill(
-                  child: CustomPaint(
-                    painter: ChartLinePainter(),
-                  ),
+                  child: CustomPaint(painter: ChartLinePainter()),
                 ),
               ],
             ),
