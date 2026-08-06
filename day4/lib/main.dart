@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'screens/workout_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-/// Root application widget launching the Day 4 WorkoutScreen.
+/// Root application widget launching the Day 2 HomeScreen as the primary view.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Fitness Tracker - Day 4',
+      title: 'Fitness Challenge App',
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const WorkoutScreen(),
+      home: const HomeScreen(),
     );
   }
 }

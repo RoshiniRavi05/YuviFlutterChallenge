@@ -23,7 +23,9 @@ class WorkoutScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomAppBar(),
+                CustomAppBar(
+                  onBackPressed: () => Navigator.maybePop(context),
+                ),
                 const SizedBox(height: 24.0),
                 const WorkoutHeader(),
                 const SizedBox(height: 24.0),
