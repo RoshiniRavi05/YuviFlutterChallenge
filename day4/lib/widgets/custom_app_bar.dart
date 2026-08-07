@@ -6,16 +6,10 @@ import 'top_action_icons.dart';
 /// Top custom navigation bar with circular back button and right action pill container.
 class CustomAppBar extends StatelessWidget {
   final VoidCallback? onBackPressed;
-  final VoidCallback? onStarPressed;
-  final VoidCallback? onEditPressed;
-  final VoidCallback? onMorePressed;
 
   const CustomAppBar({
     super.key,
     this.onBackPressed,
-    this.onStarPressed,
-    this.onEditPressed,
-    this.onMorePressed,
   });
 
   @override
@@ -66,32 +60,23 @@ class CustomAppBar extends StatelessWidget {
               ),
             ],
           ),
-          child: Row(
+          child: const Row(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: onStarPressed,
-                child: const RoundedStarIcon(
-                  size: 18.0,
-                  color: AppColors.textDark,
-                ),
+              RoundedStarIcon(
+                size: 18.0,
+                color: AppColors.textDark,
               ),
-              const SizedBox(width: 12.0),
-              GestureDetector(
-                onTap: onEditPressed,
-                child: const EditPencilIcon(
-                  size: 18.0,
-                  color: AppColors.textDark,
-                ),
+              SizedBox(width: 12.0),
+              EditPencilIcon(
+                size: 18.0,
+                color: AppColors.textDark,
               ),
-              const SizedBox(width: 12.0),
-              GestureDetector(
-                onTap: onMorePressed,
-                child: const MoreDotsIcon(
-                  size: 18.0,
-                  color: AppColors.textDark,
-                ),
+              SizedBox(width: 12.0),
+              MoreDotsIcon(
+                size: 18.0,
+                color: AppColors.textDark,
               ),
             ],
           ),
