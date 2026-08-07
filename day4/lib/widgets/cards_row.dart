@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants/app_spacing.dart';
 import 'exercise_stat_card.dart';
 import 'time_card.dart';

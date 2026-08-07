@@ -63,7 +63,11 @@ class Exercise2Card extends StatelessWidget {
               ),
 
               // Right: Horizontal 3-Dot Icon
-              const _ThreeDotsIcon(size: 18.0),
+              const Icon(
+                Icons.more_horiz,
+                color: Color(0xFF111111),
+                size: 20.0,
+              ),
             ],
           ),
 
@@ -188,44 +192,6 @@ class Exercise2Card extends StatelessWidget {
   }
 }
 
-class _ThreeDotsIcon extends StatelessWidget {
-  final double size;
-
-  const _ThreeDotsIcon({required this.size});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: CustomPaint(
-        painter: _ThreeDotsPainter(),
-      ),
-    );
-  }
-}
-
-class _ThreeDotsPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint fillPaint = Paint()
-      ..color = const Color(0xFF111111)
-      ..style = PaintingStyle.fill;
-
-    final double cy = size.height / 2;
-    const double radius = 1.4;
-    const double spacing = 5.0;
-    final double startX = (size.width - (spacing * 2)) / 2;
-
-    canvas.drawCircle(Offset(startX, cy), radius, fillPaint);
-    canvas.drawCircle(Offset(startX + spacing, cy), radius, fillPaint);
-    canvas.drawCircle(Offset(startX + (spacing * 2), cy), radius, fillPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
 class _DumbbellIcon extends StatelessWidget {
   final double size;
 
@@ -250,12 +216,6 @@ class _DumbbellIcon extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
 
 class _UpwardTrianglePainter extends CustomPainter {
   final Color color;

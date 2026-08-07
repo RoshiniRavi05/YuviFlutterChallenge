@@ -8,12 +8,7 @@ import '../constants/typography.dart';
 /// Exercise Card widget preserving all UI layout, typography, and card constraints,
 /// with exact 3-ring vector progress indicator matching reference design.
 class ExerciseCard extends StatelessWidget {
-  final VoidCallback? onStopPressed;
-
-  const ExerciseCard({
-    super.key,
-    this.onStopPressed,
-  });
+  const ExerciseCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +58,7 @@ class ExerciseCard extends StatelessWidget {
                   ),
                 ],
               ),
-
+              
               // "1:29:59" Timer text
               Text(
                 '1:29:59',
@@ -178,33 +173,29 @@ class ExerciseCard extends StatelessWidget {
           const SizedBox(height: 14.0),
 
           // ── Bottom Pill Button: STOP ──────────────────────────────────────
-          GestureDetector(
-            onTap: onStopPressed,
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              width: double.infinity,
-              height: 44.0,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF8BFAC),
-                borderRadius: BorderRadius.circular(22.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const _StopSymbolIcon(size: 14.0),
-                  const SizedBox(width: 6.0),
-                  Text(
-                    'STOP',
-                    style: GoogleFonts.inter(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.8,
-                      color: const Color(0xFF111111),
-                    ),
+          Container(
+            width: double.infinity,
+            height: 44.0,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF8BFAC),
+              borderRadius: BorderRadius.circular(22.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const _StopSymbolIcon(size: 14.0),
+                const SizedBox(width: 6.0),
+                Text(
+                  'STOP',
+                  style: GoogleFonts.inter(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.8,
+                    color: const Color(0xFF111111),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

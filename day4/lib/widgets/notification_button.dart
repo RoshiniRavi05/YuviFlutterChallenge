@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/app_spacing.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
-import 'custom_icons.dart';
 
-/// White circular notification button with optically centered bell icon and red badge.
+/// White circular notification button displaying the SVG bell icon and red badge.
 class NotificationButton extends StatelessWidget {
   const NotificationButton({super.key});
 
@@ -31,11 +30,15 @@ class NotificationButton extends StatelessWidget {
                 ),
               ],
             ),
-            child: const Center(
-              child: BellIcon(
-                size: AppSpacing.notificationBellSize,
-                color: AppColors.text,
-                strokeWidth: 1.3,
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/images/notification.svg',
+                width: AppSpacing.notificationBellSize,
+                height: AppSpacing.notificationBellSize,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.text,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),
