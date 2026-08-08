@@ -14,6 +14,7 @@ class WorkoutHeader extends StatelessWidget {
     this.title = 'Workout',
     this.durationText = '90 min',
   });
+      
 
   @override
   Widget build(BuildContext context) {
@@ -56,5 +57,7 @@ class WorkoutHeader extends StatelessWidget {
         ),
       ],
     );
+
+  
   }
 }

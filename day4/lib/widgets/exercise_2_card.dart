@@ -78,10 +78,10 @@ class Exercise2Card extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Section 1: Dumbbell Icon Circle (40x40 Light Cyan Circle)
-              const _DumbbellIcon(size: 40.0),
+              // Preserved slot space so position of Bench Press column does not change
+              const SizedBox(width: 40.0),
 
-              // Section 2: Bench Press Column ("Bench Press", "3/10 ▲ 6%")
+              // Section 1: Bench Press Column ("Bench Press", "3/10 ▲ 6%")
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -187,31 +187,6 @@ class Exercise2Card extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _DumbbellIcon extends StatelessWidget {
-  final double size;
-
-  const _DumbbellIcon({this.size = 40.0});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: const BoxDecoration(
-        color: Color(0xFFCBEFFB),
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: Image.asset(
-        'assets/images/dumbbell.png',
-        width: size * 0.54,
-        height: size * 0.54,
-        fit: BoxFit.contain,
       ),
     );
   }

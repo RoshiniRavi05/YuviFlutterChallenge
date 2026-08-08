@@ -32,29 +32,37 @@ class ExerciseCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // "Exercise" title & "1/8" pill badge
+              // Dumbbell icon + "Exercise" title & "1/8" pill badge
               Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Exercise',
-                    style: AppTypography.exerciseTitle,
-                  ),
-                  const SizedBox(width: 8.0),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 9.0,
-                      vertical: 3.5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF0F2F5),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Text(
-                      '1/8',
-                      style: AppTypography.exerciseBadge,
-                    ),
+                  const _DumbbellIcon(size: 36.0),
+                  const SizedBox(width: 10.0),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Exercise',
+                        style: AppTypography.exerciseTitle,
+                      ),
+                      const SizedBox(width: 8.0),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 9.0,
+                          vertical: 3.5,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF0F2F5),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Text(
+                          '1/8',
+                          style: AppTypography.exerciseBadge,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -258,6 +266,32 @@ class _StopSymbolPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
+class _DumbbellIcon extends StatelessWidget {
+  final double size;
+
+  const _DumbbellIcon({this.size = 40.0});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: const BoxDecoration(
+        color: Color(0xFFCBEFFB),
+        shape: BoxShape.circle,
+      ),
+      alignment: Alignment.center,
+      child: Image.asset(
+        'assets/images/dumbbell.png',
+        width: size * 0.54,
+        height: size * 0.54,
+        fit: BoxFit.contain,
+      ),
+    );
+  }
+}
+
+
 /// Pixel-perfect 4-layer circular progress gauge component matching reference UI.
 class _CircularProgressGauge extends StatelessWidget {
   final double size;
@@ -302,26 +336,26 @@ class _CircularProgressGauge extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 8.0),
-              // "Running" label
+              const SizedBox(height: 6.0),
+              // "Running" label matching sample reference typography
               Text(
                 'Running',
                 style: GoogleFonts.inter(
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xFF5E5E5E),
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xFF6B6B6B),
                   height: 1.1,
                 ),
               ),
-              const SizedBox(height: 2.0),
-              // "10km" value
+              const SizedBox(height: 1.5),
+              // "10km" value matching sample reference prominent 27px font size & letter spacing
               Text(
                 '10km',
                 style: GoogleFonts.inter(
-                  fontSize: 21.0,
+                  fontSize: 27.0,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF111111),
-                  letterSpacing: -0.4,
+                  letterSpacing: -0.6,
                   height: 1.1,
                 ),
               ),
@@ -395,13 +429,23 @@ class _GaugeRingsPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..isAntiAlias = true;
 
+    // Rotate canvas by -90 deg (-pi/2) so start/end angles in rotated space are strictly positive
+    // (75 deg to 150 deg) avoiding 0/360 wrap-around artifacts near top endpoint.
+    canvas.save();
+    canvas.translate(c.dx, c.dy);
+    canvas.rotate(-math.pi * 0.5);
+    canvas.translate(-c.dx, -c.dy);
+
+    const double rotatedStartAngle = math.pi * 0.4167; // 75 deg
+    const double rotatedEndAngle = math.pi * 0.8334;   // 150 deg
+
     // 11-step HSL interpolated gradient for 100% continuous, ultra-smooth color flow
     const Gradient activityGradient = SweepGradient(
       center: Alignment.center,
-      startAngle: startAngle4,
-      endAngle: startAngle4 + sweepAngle4,
+      startAngle: rotatedStartAngle,
+      endAngle: rotatedEndAngle,
       colors: [
-        Color(0xFF8EC045), // Leaf Green
+        Color(0xFF8EC045), // Leaf Green (top)
         Color(0xFF91C142), // Green Step 1
         Color(0xFF98C13F), // Green Step 2
         Color(0xFFA3C13A), // Lime Green
@@ -411,7 +455,7 @@ class _GaugeRingsPainter extends CustomPainter {
         Color(0xFFD7AD22), // Golden Amber
         Color(0xFFDF9E1D), // Amber Orange
         Color(0xFFE48D1A), // Warm Orange
-        Color(0xFFE77717), // Rich Orange
+        Color(0xFFE77717), // Rich Orange (bottom)
       ],
       stops: [
         0.00,
@@ -429,18 +473,28 @@ class _GaugeRingsPainter extends CustomPainter {
     );
 
     activityPaint.shader = activityGradient.createShader(rect4);
-    canvas.drawArc(rect4, startAngle4, sweepAngle4, false, activityPaint);
+    canvas.drawArc(rect4, rotatedStartAngle, sweepAngle4, false, activityPaint);
+    canvas.restore();
 
-    // Green Dot attached perfectly at the TOP endpoint of the colored arc (1:30 position)
-    final double dotX = center + r4 * math.cos(startAngle4);
-    final double dotY = center + r4 * math.sin(startAngle4);
+    // Green Dot positioned above the top endpoint of the colored arc with a white separation gap
+    const double dotAngle = startAngle4 - 0.075; // Positioned slightly above top cap
+    final double dotX = center + r4 * math.cos(dotAngle);
+    final double dotY = center + r4 * math.sin(dotAngle);
+
+    // Crisp white background halo/ring underneath green dot for exact white separation gap
+    final Paint whiteGapPaint = Paint()
+      ..color = const Color(0xFFFFFFFF)
+      ..style = PaintingStyle.fill
+      ..isAntiAlias = true;
+
+    canvas.drawCircle(Offset(dotX, dotY), 5.5, whiteGapPaint);
 
     final Paint greenDotPaint = Paint()
       ..color = const Color(0xFF8EC045)
       ..style = PaintingStyle.fill
       ..isAntiAlias = true;
 
-    canvas.drawCircle(Offset(dotX, dotY), 4.5, greenDotPaint);
+    canvas.drawCircle(Offset(dotX, dotY), 4.0, greenDotPaint);
 
     // ── 4. LEFT GREY QUARTER ARC ─────────────────────────────────────────────
     // Starts at 6:30 o'clock position (105 deg) and ends at 9:00 o'clock position (180 deg)
